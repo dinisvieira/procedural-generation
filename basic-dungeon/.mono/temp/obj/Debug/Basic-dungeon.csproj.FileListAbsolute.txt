@@ -1,0 +1,8 @@
+C:\Users\dinis\Source\Godot\procedural-generation\basic-dungeon\.mono\temp\bin\Debug\Basic-dungeon.dll
+C:\Users\dinis\Source\Godot\procedural-generation\basic-dungeon\.mono\temp\bin\Debug\Basic-dungeon.pdb
+C:\Users\dinis\Source\Godot\procedural-generation\basic-dungeon\.mono\temp\obj\Debug\Basic-dungeon.csprojAssemblyReference.cache
+C:\Users\dinis\Source\Godot\procedural-generation\basic-dungeon\.mono\temp\obj\Debug\Basic-dungeon.AssemblyInfoInputs.cache
+C:\Users\dinis\Source\Godot\procedural-generation\basic-dungeon\.mono\temp\obj\Debug\Basic-dungeon.AssemblyInfo.cs
+C:\Users\dinis\Source\Godot\procedural-generation\basic-dungeon\.mono\temp\obj\Debug\Basic-dungeon.csproj.CoreCompileInputs.cache
+C:\Users\dinis\Source\Godot\procedural-generation\basic-dungeon\.mono\temp\obj\Debug\Basic-dungeon.dll
+C:\Users\dinis\Source\Godot\procedural-generation\basic-dungeon\.mono\temp\obj\Debug\Basic-dungeon.pdb

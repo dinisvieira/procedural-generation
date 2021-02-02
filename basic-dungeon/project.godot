@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Basic-dungeon"
+run/main_scene="res://BasicDungeon.tscn"
 config/icon="res://icon.png"
 
 [rendering]
