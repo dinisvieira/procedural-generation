@@ -20,6 +20,8 @@ public class BasicDungeon : Node2D
 	public TileMap Level;
 	public Camera2D Camera;
 
+	public const int Factor = 1 / 8;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -64,7 +66,7 @@ public class BasicDungeon : Node2D
 				continue;
 			}
 
-			AddRoom(dataDict, rooms, room);
+			OrganicAddRoom(rng, dataDict, rooms, room);
 
 			if (rooms.Count > 1 && previousRoom.HasValue)
 			{
@@ -100,7 +102,7 @@ public class BasicDungeon : Node2D
 		return false;
 	}
 
-	private void AddRoom(Dictionary<Vector2, object> dataDict, List<Rect2> rooms, Rect2 room)
+	private void BasicAddRoom(Dictionary<Vector2, object> dataDict, List<Rect2> rooms, Rect2 room)
 	{
 		rooms.Add(room);
 		var xStart = (int)room.Position.x;
@@ -114,6 +116,87 @@ public class BasicDungeon : Node2D
 			{
 				var vector = new Vector2(x, y);
 				dataDict[vector] = null;
+			}
+		}
+	}
+
+	private void OrganicAddRoom(RandomNumberGenerator rng, Dictionary<Vector2, object> dataDict, List<Rect2> rooms, Rect2 room)
+	{
+		rooms.Add(room);
+
+		var roomTypeRng = rng.RandiRange(0, 1);
+
+		var xStart = (int)room.Position.x;
+		var xEnd = (int)room.End.x;
+		var yStart = (int)room.Position.y;
+		var yEnd = (int)room.End.y;
+
+		if (roomTypeRng == 0) //square room
+		{
+			for (int x = xStart; x <= xEnd; x++)
+			{
+				for (int y = yStart; y <= yEnd; y++)
+				{
+					var vector = new Vector2(x, y);
+					dataDict[vector] = null;
+				}
+			}
+		}
+		else if (roomTypeRng == 1) //organic room
+		{
+			var unit = Factor * room.Size;
+			var order = new List<Rect2>()
+			{
+				room.GrowIndividual(-unit.x, 0, -unit.x, unit.y - room.Size.y),
+				room.GrowIndividual(unit.x - room.Size.x, -unit.y, 0, -unit.y),
+				room.GrowIndividual(-unit.x, unit.y - room.Size.y, -unit.x, 0),
+				room.GrowIndividual(0, -unit.y, unit.x - room.Size.x, -unit.y)
+			};
+
+			var poly = new List<Vector2>();
+			for (int i = 0; i < order.Count; i++)//?
+			{
+				var rect = order[i];
+				var isEven = (i % 2) == 0;//?
+				var polyPartial = new List<Vector2>();
+				var rngRange = rng.RandiRange(1, 2);
+				for (int r = 0; r < rngRange; r++) //?
+				{
+					var p = new Vector2(rng.RandfRange(rect.Position.x, rect.End.x), rng.RandfRange(rect.Position.y, rect.End.y));
+					polyPartial.Add(p);
+				}
+
+				polyPartial.Sort((v1, v2) =>
+				{
+					var result = isEven ? Utils.LessX(v1, v2) : Utils.LessY(v1, v2);
+					if (result)
+					{
+						return -1;
+					}
+					else
+					{
+						return 1;
+					}
+				});
+
+				if (i > 1)
+				{
+					polyPartial.Reverse();
+				}
+
+				poly.AddRange(polyPartial);
+			}
+
+			for (int x = xStart; x <= xEnd; x++)
+			{
+				for (int y = yStart; y <= yEnd; y++)
+				{
+					var vector = new Vector2(x, y);
+					if (Geometry.IsPointInPolygon(vector, poly.ToArray()))
+					{
+						dataDict[vector] = null;
+					}
+				}
 			}
 		}
 	}
