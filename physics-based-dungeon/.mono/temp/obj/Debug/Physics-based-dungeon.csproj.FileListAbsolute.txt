@@ -1,0 +1,8 @@
+C:\Users\dinis\Source\Godot\procedural-generation\physics-based-dungeon\.mono\temp\bin\Debug\Physics-based-dungeon.dll
+C:\Users\dinis\Source\Godot\procedural-generation\physics-based-dungeon\.mono\temp\bin\Debug\Physics-based-dungeon.pdb
+C:\Users\dinis\Source\Godot\procedural-generation\physics-based-dungeon\.mono\temp\obj\Debug\Physics-based-dungeon.csprojAssemblyReference.cache
+C:\Users\dinis\Source\Godot\procedural-generation\physics-based-dungeon\.mono\temp\obj\Debug\Physics-based-dungeon.AssemblyInfoInputs.cache
+C:\Users\dinis\Source\Godot\procedural-generation\physics-based-dungeon\.mono\temp\obj\Debug\Physics-based-dungeon.AssemblyInfo.cs
+C:\Users\dinis\Source\Godot\procedural-generation\physics-based-dungeon\.mono\temp\obj\Debug\Physics-based-dungeon.csproj.CoreCompileInputs.cache
+C:\Users\dinis\Source\Godot\procedural-generation\physics-based-dungeon\.mono\temp\obj\Debug\Physics-based-dungeon.dll
+C:\Users\dinis\Source\Godot\procedural-generation\physics-based-dungeon\.mono\temp\obj\Debug\Physics-based-dungeon.pdb

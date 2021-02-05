@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Physics-based-dungeon"
+run/main_scene="res://MSTDungeon.tscn"
 config/icon="res://icon.png"
 
 [rendering]

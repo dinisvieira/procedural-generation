@@ -35,7 +35,9 @@ public class Utils : Node
     // Tests for approximate equality between two `Vector2`, allowing you to specify an absolute error margin.
     public static bool IsApproxEqual(Vector2 v1, Vector2 v2, float error = Uncertainty)
     {
-        return Math.Abs(v1.x - v2.x) < error && Math.Abs(v1.y - v2.y) < error;
+        var isAproxEqual = Math.Abs(v1.x - v2.x) < error && Math.Abs(v1.y - v2.y) < error;
+        GD.Print("IsApproxEqual: " + isAproxEqual);
+        return isAproxEqual;
     }
 
     //Calculates the Minimum Spanning Tree (MST) for given points and returns an `AStar2D` graph using Prim's algorithm.
