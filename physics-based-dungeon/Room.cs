@@ -28,6 +28,8 @@ public class Room : RigidBody2D, IEnumerator<Vector2>, IEnumerable<Vector2>, IEn
 	private float _area = 0;
 	private int _iterIndex = 0;
 
+	private double integrateForcesCounter = 0;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -60,6 +62,10 @@ public class Room : RigidBody2D, IEnumerator<Vector2>, IEnumerable<Vector2>, IEn
 			return;
 		}
 
+		integrateForcesCounter++;
+		GD.Print(integrateForcesCounter);
+
+		//GD.Print("IsApproxEqual?: " + _previousXForm.origin + " | " + state.Transform.origin);
 		if (Utils.IsApproxEqual(_previousXForm.origin, state.Transform.origin))
 		{
 			GD.Print("_consecutiveEqualities");

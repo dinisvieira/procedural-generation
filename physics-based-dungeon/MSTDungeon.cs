@@ -30,13 +30,13 @@ public class MSTDungeon : Node2D
 	private TileMap Level;
 
 	// Called when the node enters the scene tree for the first time.
-	public override async void _Ready()
+	public override void _Ready()
 	{
 		Rooms = GetNode("Rooms") as Node2D;
 		Level = GetNode("Level") as TileMap;
 
 		_rng.Randomize();
-		await Generate();
+		Generate();
 	}
 
 	//This is for visual feedback. We just re-render the rooms every frame.
@@ -71,12 +71,13 @@ public class MSTDungeon : Node2D
 
 	//Places the rooms and starts the physics simulation. Once the simulation is done
 	//("rooms_placed" gets emitted), it continues by assigning tiles in the Level node.
-	private async Task Generate()
+	private async void Generate()
 	{
 		for (int i = 1; i <= MaxRooms; i++)
 		{
 			var room = RoomResource.Instance() as Room;
-			room.Connect(nameof(Room.SleepingStateChanged), this, nameof(_on_Room_sleeping_state_changed), room);
+
+			room.Connect(nameof(Room.SleepingStateChanged), this, nameof(_on_Room_sleeping_state_changed));
 			room.Setup(_rng, Level);
 			Rooms.AddChild(room);
 
@@ -86,6 +87,8 @@ public class MSTDungeon : Node2D
 
 		//Wait for all rooms to be positioned in the game world.
 		await ToSignal(this, nameof(RoomsPlaced));
+
+		GD.Print("Generate RoomsPlaced Signal Received");
 
 		Rooms.QueueFree();
 
@@ -107,7 +110,6 @@ public class MSTDungeon : Node2D
 	// It emits the "rooms_placed" signal when it finishes so we can begin the tileset placement.
 	private void _on_Room_sleeping_state_changed()
 	{
-
 		GD.Print("_on_Room_sleeping_state_changed");
 
 		_sleepingRooms++;

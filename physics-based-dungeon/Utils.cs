@@ -36,7 +36,6 @@ public class Utils : Node
     public static bool IsApproxEqual(Vector2 v1, Vector2 v2, float error = Uncertainty)
     {
         var isAproxEqual = Math.Abs(v1.x - v2.x) < error && Math.Abs(v1.y - v2.y) < error;
-        GD.Print("IsApproxEqual: " + isAproxEqual);
         return isAproxEqual;
     }
 
