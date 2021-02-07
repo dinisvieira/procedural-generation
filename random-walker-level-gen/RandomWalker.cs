@@ -42,8 +42,6 @@ public class RandomWalker : Node2D
 
 		SetupCamera();
 		_ = GenerateLevel();
-
-		GD.Print("_Ready finished");
 	}
 
 	private async Task GenerateLevel()
@@ -73,10 +71,8 @@ public class RandomWalker : Node2D
 
 	private void PlaceSideRooms()
 	{
-		//await ToSignal(this, nameof(PathCompleted));
+		//await ToSignal(this, nameof(PathCompleted)); // not needed because we use await on the method called before this one
 		var roomsMaxIndex = Enum.GetNames(typeof(Rooms.Type)).Length - 1;
-
-		GD.Print("PlaceSideRooms.roomsMaxIndex: " + roomsMaxIndex);
 
 		foreach (var key in _state.EmptyCells.Keys)
 		{
@@ -93,7 +89,6 @@ public class RandomWalker : Node2D
 			CopyRoom(path.Offset, path.Type);
 		}
 
-		GD.Print("Emit PathCompleted");
 		EmitSignal(nameof(PathCompleted));
 	}
 
