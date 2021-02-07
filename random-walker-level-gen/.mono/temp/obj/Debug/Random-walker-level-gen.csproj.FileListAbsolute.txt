@@ -1,0 +1,8 @@
+C:\Users\dinis\Source\Godot\procedural-generation\random-walker-level-gen\.mono\temp\bin\Debug\Random-walker-level-gen.dll
+C:\Users\dinis\Source\Godot\procedural-generation\random-walker-level-gen\.mono\temp\bin\Debug\Random-walker-level-gen.pdb
+C:\Users\dinis\Source\Godot\procedural-generation\random-walker-level-gen\.mono\temp\obj\Debug\Random-walker-level-gen.csprojAssemblyReference.cache
+C:\Users\dinis\Source\Godot\procedural-generation\random-walker-level-gen\.mono\temp\obj\Debug\Random-walker-level-gen.AssemblyInfoInputs.cache
+C:\Users\dinis\Source\Godot\procedural-generation\random-walker-level-gen\.mono\temp\obj\Debug\Random-walker-level-gen.AssemblyInfo.cs
+C:\Users\dinis\Source\Godot\procedural-generation\random-walker-level-gen\.mono\temp\obj\Debug\Random-walker-level-gen.csproj.CoreCompileInputs.cache
+C:\Users\dinis\Source\Godot\procedural-generation\random-walker-level-gen\.mono\temp\obj\Debug\Random-walker-level-gen.dll
+C:\Users\dinis\Source\Godot\procedural-generation\random-walker-level-gen\.mono\temp\obj\Debug\Random-walker-level-gen.pdb
