@@ -53,22 +53,16 @@ public class RandomWalker : Node2D
 			Reset();
 			UpdateStartPosition();
 
-			GD.Print("GenerateLevel: GridSize.Y: " + GridSize.y);
-
 			while (_state.Offset.y < GridSize.y)
 			{
-				GD.Print("GenerateLevel: Offset.Y: " + _state.Offset.y);
-
 				UpdateRoomType();
 				UpdateNextPosition();
 				UpdateDownCounter();
 			}
 
-			GD.Print("GenerateLevel: End:Offset.Y: " + _state.Offset.y);
-
 			PlaceWalls();
 			await PlacePathRooms();
-			await PlaceSideRooms();
+			PlaceSideRooms();
 		}
 		catch (Exception ex)
 		{
@@ -77,10 +71,12 @@ public class RandomWalker : Node2D
 		}
 	}
 
-	private async Task PlaceSideRooms()
+	private void PlaceSideRooms()
 	{
-		await ToSignal(this, nameof(PathCompleted));
+		//await ToSignal(this, nameof(PathCompleted));
 		var roomsMaxIndex = Enum.GetNames(typeof(Rooms.Type)).Length - 1;
+
+		GD.Print("PlaceSideRooms.roomsMaxIndex: " + roomsMaxIndex);
 
 		foreach (var key in _state.EmptyCells.Keys)
 		{
@@ -97,6 +93,7 @@ public class RandomWalker : Node2D
 			CopyRoom(path.Offset, path.Type);
 		}
 
+		GD.Print("Emit PathCompleted");
 		EmitSignal(nameof(PathCompleted));
 	}
 
@@ -140,8 +137,6 @@ public class RandomWalker : Node2D
 			_state.RandomIndex = _rng.RandiRange(0, Step.Count - 1);
 		}
 
-		GD.Print("Index: " + _state.RandomIndex);
-		GD.Print("Step.Count: " + Step.Count);
 		_state.Delta = Step[_state.RandomIndex];
 
 		var horizontalChance = _rng.Randf();
