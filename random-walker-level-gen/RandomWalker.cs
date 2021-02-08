@@ -79,6 +79,8 @@ public class RandomWalker : Node2D
 			var type = _rng.RandiRange(0, roomsMaxIndex);
 			CopyRoom(key, (Rooms.Type)type);
 		}
+
+		Level.UpdateBitmaskRegion();
 	}
 
 	private async Task PlacePathRooms()
@@ -107,16 +109,20 @@ public class RandomWalker : Node2D
 	{
 		var cellGridSize = GridToMap(GridSize);
 
-		for (int y = -1; y <= cellGridSize.y; y++)
+		for (int y = -2; y <= cellGridSize.y + 1; y++)
 		{
+			Level.SetCell(-2, y, type);
 			Level.SetCell(-1, y, type);
 			Level.SetCell((int)cellGridSize.x, y, type);
+			Level.SetCell((int)cellGridSize.x + 1, y, type);
 		}
 
-		for (int x = -1; x <= cellGridSize.x; x++)
+		for (int x = -2; x <= cellGridSize.x + 1; x++)
 		{
+			Level.SetCell(x, -2, type);
 			Level.SetCell(x, -1, type);
 			Level.SetCell(x, (int)cellGridSize.y, type);
+			Level.SetCell(x, (int)cellGridSize.y + 1, type);
 		}
 	}
 

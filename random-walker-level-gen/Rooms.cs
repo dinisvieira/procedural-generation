@@ -13,6 +13,33 @@ public class Rooms : Node2D
 		LRTB
 	}
 
+	//Names kept like this so that they are the same as tileset
+	public enum Cell
+	{
+		GROUND = 0,
+		VEGETATION,
+		SPIKES,
+		MAYBE_GROUND,
+		MAYBE_BUSH,
+		MAYBE_TREE,
+		MAYBE_SPIKES
+	}
+
+	//const CELL_MAP = {
+	//    Cell.GROUND: {"chance": 1.0, "cell": [[Cell.GROUND]], "size": Vector2.ONE},
+	//    Cell.VEGETATION: {"chance": 1.0, "cell": [[Cell.VEGETATION]], "size": Vector2.ONE},
+	//    Cell.SPIKES: {"chance": 1.0, "cell": [[Cell.SPIKES]], "size": Vector2.ONE},
+	//    Cell.MAYBE_GROUND: {"chance": 0.7, "cell": [[Cell.GROUND]], "size": Vector2.ONE},
+	//    Cell.MAYBE_BUSH: {"chance": 0.3, "cell": [[Cell.VEGETATION]], "size": Vector2.ONE},
+	//    Cell.MAYBE_TREE:
+	//    {
+	//        "chance": 0.8,
+	//        "cell": [[Cell.VEGETATION, Cell.VEGETATION], [Cell.VEGETATION, Cell.VEGETATION]],
+	//        "size": 2 * Vector2.ONE
+	//    },
+	//    Cell.MAYBE_SPIKES: {"chance": 0.5, "cell": [[Cell.SPIKES]], "size": Vector2.ONE}
+	//}
+
 	public static List<Type> BottomOpened = new List<Type>() { Type.LRB, Type.LRTB };
 	public static List<Type> BottomClosed = new List<Type>() { Type.LR, Type.LRT };
 
@@ -40,6 +67,8 @@ public class Rooms : Node2D
 		var index = _rng.RandiRange(0, group.GetChildCount() - 1);
 		var room = group.GetChild(index) as TileMap;
 
+
+
 		var data = new List<RoomData>();
 		foreach (Vector2 usedCell in room.GetUsedCells())
 		{
@@ -53,6 +82,21 @@ public class Rooms : Node2D
 		}
 
 		return data;
+
+	//var data := {"objects": [], "tilemap": []}
+ //   for object in room.get_children():
+ //       data.objects.push_back(object)
+
+ //   for v in room.get_used_cells():
+ //       var mapping: Dictionary = CELL_MAP[room.get_cellv(v)]
+ //       if _rng.randf() > mapping.chance:
+ //           continue
+
+ //       for x in range(mapping.size.x):
+ //           for y in range(mapping.size.y):
+ //               data.tilemap.push_back({"offset": v + Vector2(x, y), "cell": mapping.cell[x][y]})
+ //   return data
+
 	}
 }
 
