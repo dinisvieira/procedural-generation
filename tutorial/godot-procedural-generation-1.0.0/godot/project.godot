@@ -148,7 +148,7 @@ _global_script_class_icons={
 
 config/name="Procedural Generation Demos"
 config/description="Implementations and demos of procedural generation algorithms."
-run/main_scene="res://RandomWalker/RandomWalker.tscn"
+run/main_scene="res://WorldMap/WorldMap.tscn"
 config/icon="res://icon.png"
 
 [display]

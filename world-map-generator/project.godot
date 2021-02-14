@@ -27,6 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="World-map-generator"
+run/main_scene="res://WorldMap.tscn"
 config/icon="res://icon.png"
 
 [rendering]
